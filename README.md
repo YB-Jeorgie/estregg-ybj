@@ -253,5 +253,3 @@ If you have any concerns please message me via:
 <p align="center">
   <strong>Thankie And have a Good Day.</strong>
 </p><p align="center">
-  <strong>Gamepad controls isnt gonna work, it has been removed due to problems caused by Gamepad Control inputters, if you try the game would crash, i would not recommend connect a gamepad controller as it will break the game and your controller even if you want to.</strong>
-</p>
