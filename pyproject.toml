@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "estregg-ybj"
+version = "1.1.8"
+description = "ESTREGG Space Exploration Terminal Game"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    { name = "Jeorge Miclat", email = "corruption123ter@gmail.com" }
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.optional-dependencies]
+windows = ["windows-curses; platform_system=='Windows'"]
+
+[project.scripts]
+estregg = "estregg.game:main"
+
+[project.urls]
+"Homepage" = "https://github.com/corruption123ter-ux/estregg-ybj"
+"Repository" = "https://github.com/corruption123ter-ux/estregg-ybj"
+"Bug Tracker" = "https://github.com/corruption123ter-ux/estregg-ybj/issues"
+"Estregg page" = "https://corrutpion123ter-ux.github.io/estregg"
+"Delta Page: DECODED" = "https://corrutpion123ter-ux.github.io/jsystem-TEM"
