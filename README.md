@@ -181,18 +181,5 @@ If you have any concerns please message me via:
 </p>
 
 <p align="center">
-  <strong>INCOMING SIGNAL CODE <a href="https://lingojam.com">D4F6986</a> DECODE:</strong>
-</p>
-
-<p align="center">
-  <strong>♒︎⧫︎⧫︎◻︎⬧︎🖳︎📭︎📭︎♍︎□︎❒︎❒︎◆︎◻︎⧫︎♓︎□︎■︎📂︎📄︎🗏︎⧫︎♏︎❒︎📫︎◆︎⌧︎📬︎♑︎⧫︎♒︎◆︎♌︎📬︎♓︎□︎📭︎🙰⬧︎⍓︎⬧︎⧫︎♏︎❍︎📫︎❄︎☜︎💣︎📭︎</strong>
-</p>
-
-<p align="center">
-  <strong><a href="https://lingojam.com">Delta Code WD</a></strong>
-</p>
-
-
-<p align="center">
   <strong>Thankie And have a Good Day.</strong>
 </p><p align="center">
