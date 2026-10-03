@@ -2,6 +2,13 @@
 
 import sys, time, random, math, os, platform, json
 
+VERSION = "estregg-ybj version: v1.1.9"
+
+# Handle command-line arguments for version check
+if len(sys.argv) > 1 and sys.argv[1] in ["--v", "-v", "--version", "-version"]:
+    print(VERSION)
+    sys.exit(0)
+
 # Cleanly handle cross-platform curses import
 try:
     import curses
