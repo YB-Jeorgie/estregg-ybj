@@ -40,13 +40,14 @@
 ---
 ## 🔥 Updates
 
-### 🌌 Version 1.1.8 — HUGE Massive Update!
+### 🌌 Version 1.1.9 — HUGE Massive Update!
 
 * **100 Dynamic Levels Added:** Traverse through 100 uniquely generated star systems filled with dynamic wormholes, black holes, and planetary systems.
 * **Secret Command Console (`Ctrl + E`):** Integrated an in-game secret terminal! Try commands like `jeorgie`, `last level`, and `help`.
 * **Level Progression & Victory Cutscenes:** Reaching Level 100 triggers the grand animated trophy sequence, alongside high-speed hyper-portal wormhole warp transitions.
 * **Interactive Star Scanner:** Inspect deep-space solar systems by pressing `R` (R3) to reveal stellar classes, solar masses, and radius data.
 * **Cross-Platform Curses Engine:** Refactored runtime hooks to ensure smooth execution on Windows, macOS, Termux, and Docker containers without crashes.
+* **Added Version Comand!:** Added a version command like `estregg -v`, `estregg --v`, `estregg -version`, and `estregg --version` .
 
 ---
 
