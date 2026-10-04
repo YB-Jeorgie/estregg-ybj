@@ -40,7 +40,7 @@
 ---
 ## 🔥 Updates
 
-### 🌌 Version 1.1.9 — HUGE Massive Update!
+### 🌌 Version 1.2.0 — HUGE Massive Update!
 
 * **100 Dynamic Levels Added:** Traverse through 100 uniquely generated star systems filled with dynamic wormholes, black holes, and planetary systems.
 * **Secret Command Console (`Ctrl + E`):** Integrated an in-game secret terminal! Try commands like `jeorgie`, `last level`, and `help`.
