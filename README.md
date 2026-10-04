@@ -159,20 +159,20 @@ Once installed, start the game anytime by executing:
 estregg
 ```
 
-> 💡 Note for Mobile Users: Because mobile screens lack arrow keys, it is highly recommended to use a physical Bluetooth keyboard, Otg Keyboards, Virtual keyboards or an app like **Hacker's Keyboard** to play.
+> 💡 Note for Mobile Users: Because mobile screens lack arrow keys, it is highly recommended to use a physical Bluetooth keyboard, Otg Keyboards, Virtual keyboards, use the Gboard and The Termux Controls, or an app like **Hacker's Keyboard** to play.
 
 ---
 
 ## 💬 Frequently Asked Questions
 
 **Q: Is this a virus?**
-*   **A:** No, it is not a virus! Everything is open-source, safe, and built entirely using standard Python libraries.
+**A:** No, it is not a virus! Everything is open-source, safe, and built entirely using standard Python libraries.
 
 **Q: Did you copy someone else's creation?**
-*   **A:** No. This is an entirely custom, original project built from scratch. 
+**A:** No. This is an entirely custom, original project built from scratch. 
 
 **Q: Is this Illegal?**
-*   **A:** No it is not illegal to code a game or to use legal dependecies tools
+**A:** No it is not illegal to code a game or to use legal dependecies tools
 
 If you have any concerns please message me via:
 
