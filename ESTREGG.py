@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-import sys, time, random, math, os, platform, json
+import sys, time, random, math, os, platform, json, argparse
 
-VERSION = "estregg-ybj version: v1.2.0"
+VERSION = "estregg-ybj: version: v1.2.1"
 
 # Cleanly handle cross-platform curses import
 try:
@@ -15,7 +15,6 @@ except ImportError:
     else:
         raise
 
-# Cross-platform terminal clear command
 CLEAR_CMD = 'cls' if platform.system() == 'Windows' else 'clear'
 SAVE_FILE = "estregg_save.json"
 TOTAL_LEVELS = 100
@@ -25,7 +24,6 @@ class ESTREGG:
     def __init__(self, stdscr):
         self.scr = stdscr
 
-        # Universal safely toggled cursor setup
         try:
             curses.curs_set(0)
         except curses.error:
@@ -33,7 +31,6 @@ class ESTREGG:
 
         self.scr.nodelay(True)
 
-        # Colors Initialization
         if curses.has_colors():
             try:
                 curses.start_color()
@@ -48,10 +45,7 @@ class ESTREGG:
             except curses.error:
                 pass
 
-        # Game Screens: 'TITLE', 'GAME', 'PROGRESS'
         self.current_screen = 'TITLE'
-
-        # ESTREGG - World State & Dynamic Galaxies (1 to 100)
         self.galaxy_num = 1
         self.world_x, self.world_y = 30.0, 15.0
         self.cam_x, self.cam_y = 0.0, 0.0
@@ -64,27 +58,22 @@ class ESTREGG:
         self.star_info_open = False
         self.focused_star_details = None
 
-        # Easter Egg States
         self.cmd_prompt_open = False
         self.cmd_input = ""
 
-        # Settings Options
         self.show_stars = True
         self.speed_multiplier = 1.0
         self.last_input_source = "Keyboard"
         self.last_pressed_key = "None"
 
-        # Planet Landing State
         self.is_landed = False
         self.current_landed_planet = None
         self.launch_charge = 0
         self.cooldown_landing = 0
 
-        # Input Highlights
         self.dpad_state = {'UP': False, 'DOWN': False, 'LEFT': False, 'RIGHT': False}
         self.action_state = {'A': False, 'B': False, 'X': False, 'Y': False}
 
-        # Stars & Physics Arrays
         self.stars = []
         self._generate_galaxy_content()
         self.load_progress()
@@ -276,7 +265,7 @@ class ESTREGG:
                 self._safe_addstr(ry - 5, cx - 18, "✨ YOU COMPLETED ALL 100 LEVELS! ✨", win_attr)
 
             float_y = int((h // 2 + 6) + math.sin(elapsed * 3) * 2)
-            save_msg = "💾 DON'T FORGET TO SAVE YOUR GAME WITH Ctrl + Shift + S !"
+            save_msg = "💾 DON'T FORGET TO SAVE YOUR GAME WITH Ctrl + S !"
             save_attr = curses.color_pair(1) | curses.A_BOLD | (curses.A_BLINK if int(elapsed * 4) % 2 == 0 else 0)
             self._safe_addstr(float_y, cx - len(save_msg) // 2, save_msg, save_attr)
 
@@ -340,7 +329,7 @@ class ESTREGG:
                 self.world_x -= math.cos(angle) * 2.5
                 self.world_y -= math.sin(angle) * 2.5
 
-        wh_dist = math.hypot(self.white_hole['x'] - self.world_x, self.white_hole['y'] - self.world_x)
+        wh_dist = math.hypot(self.white_hole['x'] - self.world_x, self.white_hole['y'] - self.world_y)
         if wh_dist < 35:
             angle = math.atan2(self.world_y - self.white_hole['y'], self.world_x - self.white_hole['x'])
             self.world_x += math.cos(angle) * 1.8
@@ -415,7 +404,7 @@ class ESTREGG:
         self._safe_addstr(by + 1, bx, "║" + " "*((box_w-2-8)//2) + "PROGRESS" + " "*((box_w-2-8)//2 + (box_w-2-8)%2) + "║", curses.color_pair(4) | curses.A_BOLD)
         self._safe_addstr(by + 2, bx, "║" + " "*((box_w-2-len(p_lbl))//2) + p_lbl + " "*((box_w-2-len(p_lbl))//2 + (box_w-2-len(p_lbl))%2) + "║", curses.color_pair(3) | curses.A_BOLD)
         self._safe_addstr(by + 3, bx, "║" + " "*((box_w-2-len(p_bar))//2) + p_bar + " "*((box_w-2-len(p_bar))//2 + (box_w-2-len(p_bar))%2) + "║", curses.color_pair(3))
-        self._safe_addstr(by + 4, bx, "║" + " "*((box_w-2-11)//2) + "PRESS V + P" + " "*((box_w-2-11)//2 + (box_w-2-11)%2) + "║", curses.color_pair(4))
+        self._safe_addstr(by + 4, bx, "║" + " "*((box_w-2-11)//2) + "PRESS V / P" + " "*((box_w-2-11)//2 + (box_w-2-11)%2) + "║", curses.color_pair(4))
         self._safe_addstr(by + 5, bx, "╚" + "═"*(box_w-2) + "╝", curses.color_pair(4))
 
         # NEW GAME Box
@@ -582,7 +571,7 @@ class ESTREGG:
             mx, my = (w - mw) // 2, (h - mh) // 2
             s = self.focused_star_details
             for y in range(mh): self._safe_addstr(my + y, mx, " " * mw, curses.A_REVERSE)
-            self._safe_addstr(my + 1, mx + 2, "=== ESTREGG STAR DETAILS (R3) ===", curses.A_REVERSE | curses.A_BOLD)
+            self._safe_addstr(my + 1, mx + 2, "=== ESTREGG STAR DETAILS (R) ===", curses.A_REVERSE | curses.A_BOLD)
             self._safe_addstr(my + 3, mx + 2, f"Spectral Class: {s['class']}", curses.A_REVERSE)
             self._safe_addstr(my + 4, mx + 2, f"Solar Radius  : {s['radius']} R_sun", curses.A_REVERSE)
             self._safe_addstr(my + 5, mx + 2, f"Solar Mass    : {s['mass']} M_sun", curses.A_REVERSE)
@@ -766,19 +755,15 @@ def main_curses(stdscr):
     app = ESTREGG(stdscr)
     app.run()
 
-def main(*args, **kwargs):
-    # Check CLI arguments INSIDE main() so entry points trigger it correctly
-    if len(sys.argv) > 1 and sys.argv[1] in ["--v", "-v", "--version", "-version"]:
+def main():
+    args_str = " ".join(sys.argv).lower()
+    version_keywords = ["v-estregg", "version-estregg", "v--estregg", "version--estregg", "-v", "--version"]
+    
+    if any(keyword in args_str for keyword in version_keywords):
         print(VERSION)
-        return
+        sys.exit(0)
 
-    if args and len(args) > 0 and hasattr(args[0], 'getmaxyx'):
-        main_curses(args[0])
-    else:
-        curses.wrapper(main_curses)
+    curses.wrapper(main_curses)
 
-if __name__ == '__main__':
-    try:
-        main()
-    finally:
-        os.system(CLEAR_CMD)
+if __name__ == "__main__":
+    main()
