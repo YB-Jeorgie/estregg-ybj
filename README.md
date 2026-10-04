@@ -40,7 +40,7 @@
 ---
 ## 🔥 Updates
 
-### 🌌 Version 1.2.0 — HUGE Massive Update!
+### 🌌 Version 1.1.8 - 1.2.1 — HUGE Massive Update!
 
 * **100 Dynamic Levels Added:** Traverse through 100 uniquely generated star systems filled with dynamic wormholes, black holes, and planetary systems.
 * **Secret Command Console (`Ctrl + E`):** Integrated an in-game secret terminal! Try commands like `jeorgie`, `last level`, and `help`.
@@ -135,7 +135,14 @@ Install the package globally in an isolated environment using pipx:
 ```bash:
 pipx install estregg-ybj
 ```
+> If it doesnt work try:
+
+```bash:
+pipx install --force estregg-ybj
+```
+
 ---
+
 > Note: If you already have estregg-ybj installed and want to update to the latest version, run:
 
 ```bash:
