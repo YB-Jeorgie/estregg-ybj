@@ -2,12 +2,7 @@
 
 import sys, time, random, math, os, platform, json
 
-VERSION = "estregg-ybj version: v1.1.9"
-
-# Handle command-line arguments for version check
-if len(sys.argv) > 1 and sys.argv[1] in ["--v", "-v", "--version", "-version"]:
-    print(VERSION)
-    sys.exit(0)
+VERSION = "estregg-ybj version; v1.1.9"
 
 # Cleanly handle cross-platform curses import
 try:
@@ -772,6 +767,11 @@ def main_curses(stdscr):
     app.run()
 
 def main(*args, **kwargs):
+    # Check CLI arguments INSIDE main() so entry points trigger it correctly
+    if len(sys.argv) > 1 and sys.argv[1] in ["--v", "-v", "--version", "-version"]:
+        print(VERSION)
+        return
+
     if args and len(args) > 0 and hasattr(args[0], 'getmaxyx'):
         main_curses(args[0])
     else:
