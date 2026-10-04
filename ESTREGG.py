@@ -2,7 +2,7 @@
 
 import sys, time, random, math, os, platform, json
 
-VERSION = "estregg-ybj version; v1.1.9"
+VERSION = "estregg-ybj version: v1.2.0"
 
 # Cleanly handle cross-platform curses import
 try:
