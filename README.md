@@ -1,4 +1,8 @@
 <p align="center">
+<img width="1365" height="679" alt="Estregg" src="https://github.com/user-attachments/assets/b9cb7093-8137-456e-9825-92a6f748ce62" />
+</p>
+
+<p align="center">
   <img width="240" height="260" alt="Image" src="https://github.com/user-attachments/assets/e81e3b72-0ba0-418b-9fce-1dc855e2bf53" />
 </p>
 
@@ -152,11 +156,23 @@ pipx upgrade estregg-ybj
 
 ---
 
-## 🚀 Launching the Game
-Once installed, start the game anytime by executing:
+## 🚀Test And Launch the Game
+Once installed, Test the game by executing:
 
 ```bash:
-estregg
+estregg -v
+```
+
+Once executed, it will show something like This:
+
+```bash:
+estregg-ybj: version: v._._._
+```
+
+Once Confirmed, You can Play the game anytime by executing:
+
+```bash:
+estregg 
 ```
 
 > 💡 Note for Mobile Users: Because mobile screens lack arrow keys, it is highly recommended to use a physical Bluetooth keyboard, Otg Keyboards, Virtual keyboards, use the Gboard and The Termux Controls, or an app like **Hacker's Keyboard** to play.
