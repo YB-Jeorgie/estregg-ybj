@@ -1,0 +1,46 @@
+Metadata-Version: 2.4
+Name: estregg-ybj
+Version: 1.2.1
+Summary: ESTREGG Space Exploration Terminal Game
+Author-email: Jeorge Miclat <corruption123ter@gmail.com>
+Project-URL: Homepage, https://yb-jeorgie.github.io/estregg/
+Project-URL: Repository, https://github.com/YB-Jeorgie/estregg-ybj
+Project-URL: Bug Tracker, https://github.com/YB-Jeorgie/estregg-ybj/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: windows-curses; platform_system == "Windows"
+Dynamic: license-file
+
+DESCRIPTION:
+
+How It Works Once installed, you launch the game simply by typing estregg into your terminal. The game renders a text-based environment using standard ASCII art and keyboard controls. It listens to keypresses to navigate through menus, move your character, and interact with the game world. Because it runs inside standard terminal buffers, it’s super fast, doesn't hog system memory, and doesn't require a heavy graphical engine to play.
+
+Who Made It? Created and maintained by YB-jeorge (GitHub handle: corruption123ter-ux).
+
+Tools & Tech Stack Python 3: The core game logic is written entirely in Python.
+
+Curses (curses): Handles terminal screen drawing, keyboard inputs, and frame rendering without needing a GUI.
+
+Wine / Pipx: Packaged for modular setup and seamless isolated terminal installation via pipx.
+
+Supported Platforms / OS Linux Terminal (Ubuntu, Debian, Arch, Fedora, etc.)
+
+macOS (via native Terminal or iTerm2)
+
+Windows (using PowerShell, Command Prompt, or WSL)
+
+ChromeOS (inside the Linux development environment)
+
+Android (via Termux)
+
+GitHub & PyPI Overview PyPI.org Listing You can install estregg-ybj directly from PyPI. It is distributed as a clean Python package, making global execution quick and painless.
+
+Quick Installation:
+
+pipx install estregg-ybj (Or pip install estregg-ybj)
+
+To Launch: Estregg

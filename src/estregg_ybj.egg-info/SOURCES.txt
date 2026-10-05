@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/estregg/__init__.py
+src/estregg/game.py
+src/estregg_ybj.egg-info/PKG-INFO
+src/estregg_ybj.egg-info/SOURCES.txt
+src/estregg_ybj.egg-info/dependency_links.txt
+src/estregg_ybj.egg-info/entry_points.txt
+src/estregg_ybj.egg-info/requires.txt
+src/estregg_ybj.egg-info/top_level.txt
