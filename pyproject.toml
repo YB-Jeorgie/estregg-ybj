@@ -4,24 +4,31 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "estregg-ybj"
-version = "1.2.0"
+version = "1.2.1"
 description = "ESTREGG Space Exploration Terminal Game"
 readme = "README.md"
 requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
 authors = [
     { name = "Jeorge Miclat", email = "corruption123ter@gmail.com" }
 ]
 
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[project.optional-dependencies]
-windows = ["windows-curses; platform_system=='Windows'"]
+dependencies = [
+    "windows-curses; platform_system=='Windows'",
+]
 
 [project.scripts]
 estregg = "estregg.game:main"
 
 [project.urls]
 "Homepage" = "https://yb-jeorgie.github.io/estregg/"
-"Repository" = "https://github.com/YB-Jeorgie/estregg-ybjj"
+"Repository" = "https://github.com/YB-Jeorgie/estregg-ybj"
 "Bug Tracker" = "https://github.com/YB-Jeorgie/estregg-ybj/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
