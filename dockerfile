@@ -1,17 +1,18 @@
-# 1. Define the base environment (Build Stage)
+# 1. Use the lightweight Python base image
 FROM python:3.11-slim
 
-# 2. Add the metadata link for GitHub Packages
+# 2. Link it to your GitHub Repository
 LABEL org.opencontainers.image.source=https://github.com
 
-# 3. Set up the working directory inside the container
+# 3. Set the directory inside the container
 WORKDIR /app
 
-# 4. Copy your project files into the container
+# 4. Copy absolutely everything from your repository into the container
 COPY . /app/
 
-# 5. Install dependencies if you have them (uncomment if needed)
-# RUN pip install --no-cache-dir -r requirements.txt
+# 5. List files during the build to verify they are there (Helps debug)
+RUN ls -la /app
 
-# 6. Specify the default command to run when the container starts
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# 6. Run your actual startup script
+# If your project doesn't use Django/manage.py, replace "main.py" with your actual file name!
+CMD ["python", "ESTREGG.py"] 
