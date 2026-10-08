@@ -2,11 +2,12 @@ name: Create and publish a Docker image
 
 on:
   push:
-    branches: ['main'] # Change to 'master' if your default branch uses it
+    branches: ['main']
+  workflow_dispatch: # This allows you to run it manually from the Actions tab!
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: estregg/ybj
+  IMAGE_NAME: yb-jeorgie/estregg-ybj # Fixed: Lowercase match for your GitHub path
 
 jobs:
   build-and-push-image:
