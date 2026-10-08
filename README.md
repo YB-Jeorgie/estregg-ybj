@@ -1,44 +1,44 @@
 <p align="center">
-  <img width="1365" height="679" alt="Estregg" src="https://github.com" />
+<img width="1365" height="679" alt="Estregg" src="https://github.com/user-attachments/assets/b9cb7093-8137-456e-9825-92a6f748ce62" />
 </p>
 
 <p align="center">
-  <img width="240" height="260" alt="Image" src="https://github.com" />
+  <img width="240" height="260" alt="Image" src="https://github.com/user-attachments/assets/e81e3b72-0ba0-418b-9fce-1dc855e2bf53" />
 </p>
 
 <h1 align="center">estregg-ybj</h1>
 
-[![PyPI version](https://shields.io)](https://pypi.org)
-[![Python Versions](https://shields.io)](https://pypi.org)
-[![GitHub release](https://shields.io)](https://github.com)
+[![PyPI version](https://img.shields.io/pypi/v/estregg-ybj.svg?cacheSeconds=0)](https://pypi.org/project/estregg-ybj/)
+[![Python Versions](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://pypi.org/project/estregg-ybj/)
+[![GitHub release](https://img.shields.io/github/v/release/YB-Jeorgie/estregg-ybj)](https://github.com/YB-Jeorgie/estregg-ybj/releases)
 
 <!-- Dependencies/Tools -->
-[![Curses](https://shields.io)](https://python.org)
-[![WINE](https://shields.io)](https://github.com)
+[![Curses](https://img.shields.io/badge/dependency-curses-green.svg)](https://docs.python.org/3/library/curses.html)
+[![WINE](https://img.shields.io/badge/Tool-WINE-8F0052.svg)](https://github.com/corruption123ter-ux/estregg-ybj)
 
 <!-- Platforms Supported -->
-[![ChromeOS](https://shields.io)](https://github.com)
-[![Windows](https://shields.io)](https://github.com)
-[![macOS](https://shields.io)](https://github.com)
-[![Android](https://shields.io)](https://github.com)
-[![Linux](https://shields.io)](https://github.com)
-[![Darwin](https://shields.io)](https://github.com)
-[![Null](https://shields.io)](https://github.com)
+[![ChromeOS](https://img.shields.io/badge/platform-ChromeOS-yellow.svg)](https://github.com/YB-Jeorgie/estregg-ybj)
+[![Windows](https://img.shields.io/badge/platform-Windows-0078D6.svg?logo=windows&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
+[![macOS](https://img.shields.io/badge/platform-macOS-000000.svg?logo=apple&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
+[![Android](https://img.shields.io/badge/platform-Android-3DDC84.svg?logo=android&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
+[![Linux](https://img.shields.io/badge/platform-Linux-FCC624.svg?logo=linux&logoColor=black)](https://github.com/YB-Jeorgie/estregg-ybj)
+[![Darwin](https://img.shields.io/badge/platform-Darwin-000000.svg?logo=apple&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
+[![Null](https://img.shields.io/badge/platform-Null-555555.svg?logo=gnubash&logoColor=white)](https://github.com/corruption123ter-ux/estregg-ybj)
 
 <!-- Space Badge -->
-[![Space](https://shields.io)](https://github.com)
+[![Space](https://img.shields.io/badge/theme-space-FF4500.svg?logo=rocket&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
 
 <!-- Creator Badge -->
-[![Creator](https://shields.io)](https://github.com)
+[![Creator](https://img.shields.io/badge/Creator-YB__Jeorgie-9932CC.svg?logo=gamepad&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
 
 <!-- ASCII Game Badge -->
-[![ASCII Game](https://shields.io)](https://github.com)
+[![ASCII Game](https://img.shields.io/badge/genre-ASCII%20Game-black.svg?logo=terminal&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
 
 <!-- Pip Install Badge -->
-[![pipx install](https://shields.io)](https://pypi.org)
+[![pipx install](https://img.shields.io/badge/pipx--install-estregg--ybj-3776AB.svg?logo=python&logoColor=white)](https://pypi.org/project/estregg-ybj/)
 
 <p align="center">
-  <strong>A terminal-based space exploration game built by YB_Jeorgie with Python curses.</strong>
+  <strong>A terminal-based space exploration game built by YB_Jeorgie with Python curses.</strong>
 </p>
 
 ---
