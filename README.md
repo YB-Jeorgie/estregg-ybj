@@ -1,47 +1,48 @@
 <p align="center">
-<img width="1365" height="679" alt="Estregg" src="https://github.com/user-attachments/assets/b9cb7093-8137-456e-9825-92a6f748ce62" />
+  <img width="1365" height="679" alt="Estregg" src="https://github.com" />
 </p>
 
 <p align="center">
-  <img width="240" height="260" alt="Image" src="https://github.com/user-attachments/assets/e81e3b72-0ba0-418b-9fce-1dc855e2bf53" />
+  <img width="240" height="260" alt="Image" src="https://github.com" />
 </p>
 
 <h1 align="center">estregg-ybj</h1>
 
-[![PyPI version](https://img.shields.io/pypi/v/estregg-ybj.svg?cacheSeconds=0)](https://pypi.org/project/estregg-ybj/)
-[![Python Versions](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://pypi.org/project/estregg-ybj/)
-[![GitHub release](https://img.shields.io/github/v/release/YB-Jeorgie/estregg-ybj)](https://github.com/YB-Jeorgie/estregg-ybj/releases)
+[![PyPI version](https://shields.io)](https://pypi.org)
+[![Python Versions](https://shields.io)](https://pypi.org)
+[![GitHub release](https://shields.io)](https://github.com)
 
 <!-- Dependencies/Tools -->
-[![Curses](https://img.shields.io/badge/dependency-curses-green.svg)](https://docs.python.org/3/library/curses.html)
-[![WINE](https://img.shields.io/badge/Tool-WINE-8F0052.svg)](https://github.com/corruption123ter-ux/estregg-ybj)
+[![Curses](https://shields.io)](https://python.org)
+[![WINE](https://shields.io)](https://github.com)
 
 <!-- Platforms Supported -->
-[![ChromeOS](https://img.shields.io/badge/platform-ChromeOS-yellow.svg)](https://github.com/YB-Jeorgie/estregg-ybj)
-[![Windows](https://img.shields.io/badge/platform-Windows-0078D6.svg?logo=windows&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
-[![macOS](https://img.shields.io/badge/platform-macOS-000000.svg?logo=apple&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
-[![Android](https://img.shields.io/badge/platform-Android-3DDC84.svg?logo=android&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
-[![Linux](https://img.shields.io/badge/platform-Linux-FCC624.svg?logo=linux&logoColor=black)](https://github.com/YB-Jeorgie/estregg-ybj)
-[![Darwin](https://img.shields.io/badge/platform-Darwin-000000.svg?logo=apple&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
-[![Null](https://img.shields.io/badge/platform-Null-555555.svg?logo=gnubash&logoColor=white)](https://github.com/corruption123ter-ux/estregg-ybj)
+[![ChromeOS](https://shields.io)](https://github.com)
+[![Windows](https://shields.io)](https://github.com)
+[![macOS](https://shields.io)](https://github.com)
+[![Android](https://shields.io)](https://github.com)
+[![Linux](https://shields.io)](https://github.com)
+[![Darwin](https://shields.io)](https://github.com)
+[![Null](https://shields.io)](https://github.com)
 
 <!-- Space Badge -->
-[![Space](https://img.shields.io/badge/theme-space-FF4500.svg?logo=rocket&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
+[![Space](https://shields.io)](https://github.com)
 
 <!-- Creator Badge -->
-[![Creator](https://img.shields.io/badge/Creator-YB__Jeorgie-9932CC.svg?logo=gamepad&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
+[![Creator](https://shields.io)](https://github.com)
 
 <!-- ASCII Game Badge -->
-[![ASCII Game](https://img.shields.io/badge/genre-ASCII%20Game-black.svg?logo=terminal&logoColor=white)](https://github.com/YB-Jeorgie/estregg-ybj)
+[![ASCII Game](https://shields.io)](https://github.com)
 
 <!-- Pip Install Badge -->
-[![pipx install](https://img.shields.io/badge/pipx--install-estregg--ybj-3776AB.svg?logo=python&logoColor=white)](https://pypi.org/project/estregg-ybj/)
+[![pipx install](https://shields.io)](https://pypi.org)
 
 <p align="center">
-  <strong>A terminal-based space exploration game built by YB_Jeorgie with Python curses.</strong>
+  <strong>A terminal-based space exploration game built by YB_Jeorgie with Python curses.</strong>
 </p>
 
 ---
+
 ## 🔥 Updates
 
 ### 🌌 Version 1.1.8 - 1.2.1 — HUGE Massive Update!
@@ -51,7 +52,7 @@
 * **Level Progression & Victory Cutscenes:** Reaching Level 100 triggers the grand animated trophy sequence, alongside high-speed hyper-portal wormhole warp transitions.
 * **Interactive Star Scanner:** Inspect deep-space solar systems by pressing `R` (R3) to reveal stellar classes, solar masses, and radius data.
 * **Cross-Platform Curses Engine:** Refactored runtime hooks to ensure smooth execution on Windows, macOS, Termux, and Docker containers without crashes.
-* **Added Version Comand!:** Added a version command like `estregg -v`, `estregg --v`, `estregg -version`, and `estregg --version` .
+* **Added Version Command:** Added a version command supporting formats like `estregg -v`, `estregg --v`, `estregg -version`, and `estregg --version`.
 
 ---
 
@@ -69,29 +70,22 @@ sudo apt update && sudo apt install -y python3 python3-pip pipx && pipx ensurepa
 ```
 
 #### macOS
-```bash:
+```bash
 brew install pipx
 pipx ensurepath
 ```
 
 #### Windows (Command Prompt / PowerShell)
-Command Prompt:
-```bash:
+```cmd
 winget install Python.Python.3.12 --accept-package-agreements --accept-source-agreements
+```
+```powershell
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 py -m pip install --user pipx
 py -m pipx ensurepath
 ```
 
-Powershell:
-```bash
-winget install Python.Python.3.12 --accept-package-agreements --accept-source-agreements
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-py -m pip install --user pipx
-py -m pipx ensurepath
-```
-
-> ⚠️ **Note:** To run `estregg` on Windows, you must run `pip install windows-curses` in the Modern Windows Terminal first to prevent crashes.
+> ⚠️ **Note:** To run `estregg` on Windows, you must run `pip install windows-curses` in the Windows Terminal first to prevent crashes.
 
 #### Windows Offline / Download Troubleshooting
 If you encounter network errors like **"cannot download python tools"**, you can install Python manually using a USB drive:
@@ -100,101 +94,124 @@ If you encounter network errors like **"cannot download python tools"**, you can
 3. Plug the USB into your target machine, run the installer, and ensure you check the box that says **"Add python.exe to PATH"** before finishing setup.
 
 #### Android (Termux)
-```bash:
+```bash
 pkg update && pkg upgrade -y
 pkg install python pip -y
 pip install pipx
 pipx ensurepath
 ```
 
-> ⚠️ Note: If this is your first time installing pipx, close and reopen your terminal after running pipx ensurepath so your environment updates properly. And to verify python, pipx and pip is download run:
+> ⚠️ **Note:** If this is your first time installing pipx, close and reopen your terminal after running `pipx ensurepath` so your environment updates properly. 
 
-```bash:
+To verify everything is downloaded correctly, check your versions:
+
+```bash
 python3 --version
-```
-
-after running py --version run:
-
-```bash:
 pip --version
-```
-
-after running py -m pip --version, run:
-
-```bash:
 pipx --version
 ```
 
-to test run:
-
-```bash:
+To run a quick diagnostic test:
+```bash
 pipx run cowsay -t "Hello World!"
 ```
 
 ---
 
 ### Step 2: Install estregg-ybj
-Install the package globally in an isolated environment using pipx:
 
-```bash:
+Install the package globally in an isolated environment using pipx:
+```bash
 pipx install estregg-ybj
 ```
-> If it doesnt work try:
 
-```bash:
+If the standard command encounters problems, force the installation:
+```bash
 pipx install --force estregg-ybj
 ```
 
+#### Alternative: Run with Docker
+If you prefer running the game inside a container, pull the image:
+```bash
+docker pull ghcr.io/yb-jeorgie/estregg-ybj:latest
+```
+
+If you need to install Docker on your Linux/Crostini environment first, use these steps:
+
+1. **Update package manager and install prerequisites:**  
+   ```bash
+   sudo apt update && sudo apt install -y ca-certificates curl gnupg
+   ```
+2. **Add Docker official GPG key and repository:**  
+   ```bash
+   sudo install -m 0755 -d /etc/apt/keyrings
+   curl -fsSL https://docker.com | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+   echo \
+     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://docker.com \
+     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   ```
+3. **Install Docker engine:**  
+   ```bash
+   sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io
+   ```
+4. **Grant non-root permissions and start service:**  
+   ```bash
+   sudo usermod -aG docker $USER
+   sudo service docker start
+   ```
+
+Verify your Docker installation with:
+```bash
+docker --version
+```
+
 ---
 
-> Note: If you already have estregg-ybj installed and want to update to the latest version, run:
+## 🚀 Test and Launch the Game
 
-```bash:
+If you have already installed `estregg-ybj` previously and just want to get the latest features, update it using:
+```bash
 pipx upgrade estregg-ybj
 ```
-> Note: If you Sucessfully Downloaded Estregg-ybj but when u Ran estregg it said "launching estregg" make sure you ran pipx ensurepath And Restarted your Terminal so estregg Works
 
----
+> ⚠️ **Note:** If your terminal shows `"launching estregg"` but doesn't fully boot, ensure you have executed `pipx ensurepath` and completely restarted your terminal window.
 
-## 🚀Test And Launch the Game
-Once installed, Test the game by executing:
-
-```bash:
+### 1. Verify Version
+```bash
 estregg -v
 ```
+*Expected Output:* `estregg-ybj: version: v._._._`
 
-Once executed, it will show something like This:
-
-```bash:
-estregg-ybj: version: v._._._
+### 2. Start Playing
+```bash
+estregg
+```
+Or via Docker:
+```bash
+docker run -it ghcr.io/yb-jeorgie/estregg-ybj:latest
 ```
 
-Once Confirmed, You can Play the game anytime by executing:
-
-```bash:
-estregg 
-```
-
-> 💡 Note for Mobile Users: Because mobile screens lack arrow keys, it is highly recommended to use a physical Bluetooth keyboard, Otg Keyboards, Virtual keyboards, use the Gboard and The Termux Controls, or an app like **Hacker's Keyboard** to play.
+> 💡 **Note for Mobile Users:** Because mobile interfaces lack dedicated arrow keys, it is highly recommended to use a physical Bluetooth/OTG keyboard, or a specialized virtual interface application like **Hacker's Keyboard** combined with Termux controls.
 
 ---
 
 ## 💬 Frequently Asked Questions
 
-**Q: Is this a virus?**
+**Q: Is this a virus?**  
 **A:** No, it is not a virus! Everything is open-source, safe, and built entirely using standard Python libraries.
 
-**Q: Did you copy someone else's creation?**
-**A:** No. This is an entirely custom, original project built from scratch. 
+**Q: Did you copy someone else's creation?**  
+**A:** No. This is an entirely custom, original project built from scratch. 
 
-**Q: Is this Illegal?**
-**A:** No it is not illegal to code a game or to use legal dependecies tools
+**Q: Is this Illegal?**  
+**A:** No, it is completely legal to develop custom terminal games and implement authorized software dependencies.
 
-If you have any concerns please message me via:
-
-**🖨[YB-Jeorgie reddit](https://www.reddit.com/user/Cool-Technician-7609/)**
-
-**📧[Email](https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRmVpWPkbLGfDFPKWkpdVbxprZSJfhgzKtHczBNssdpggQDPPtbXZvntxsXNkxnpMkTlCVb)**
+If you have questions or concerns, reach out via:
+* **🖨 [YB-Jeorgie Reddit](https://reddit.com)**
+* **📧 [Email Contact](https://google.com)**
 
 ---
 
