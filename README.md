@@ -50,7 +50,7 @@
 * **100 Dynamic Levels Added:** Traverse through 100 uniquely generated star systems filled with dynamic wormholes, black holes, and planetary systems.
 * **Secret Command Console (`Ctrl + E`):** Integrated an in-game secret terminal! Try commands like `jeorgie`, `last level`, and `help`.
 * **Level Progression & Victory Cutscenes:** Reaching Level 100 triggers the grand animated trophy sequence, alongside high-speed hyper-portal wormhole warp transitions.
-* **Interactive Star Scanner:** Inspect deep-space solar systems by pressing `R` (R3) to reveal stellar classes, solar masses, and radius data.
+* **Interactive Star Scanner:** Inspect deep-space solar systems by pressing `R` to reveal stellar classes, solar masses, and radius data.
 * **Cross-Platform Curses Engine:** Refactored runtime hooks to ensure smooth execution on Windows, macOS, Termux, and Docker containers without crashes.
 * **Added Version Command:** Added a version command supporting formats like `estregg -v`, `estregg --v`, `estregg -version`, and `estregg --version`.
 
@@ -183,7 +183,7 @@ pipx upgrade estregg-ybj
 ```bash
 estregg -v
 ```
-*Expected Output:* `estregg-ybj: version: v._._._`
+*Expected Output:* `estregg-ybj: version: v.1.x.x`
 
 ### 2. Start Playing
 ```bash
@@ -210,8 +210,8 @@ docker run -it ghcr.io/yb-jeorgie/estregg-ybj:latest
 **A:** No, it is completely legal to develop custom terminal games and implement authorized software dependencies.
 
 If you have questions or concerns, reach out via:
-* **🖨 [YB-Jeorgie Reddit](https://reddit.com)**
-* **📧 [Email Contact](https://google.com)**
+* **🖨 [YB-Jeorgie Reddit](https://github.com/YB-Jeorgie/estregg-ybj)**
+* **📧 [Email Contact](https://mail.google.com/mail/u/0/#inbox?compose=CllgCJqbzFZMNpmZDXGWkTfXMzFRbTMRKWGvrMNgCjZNrZrhvknhcgwfTvHzDnKTDrkDzVQkPGB)**
 
 ---
 
