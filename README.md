@@ -131,7 +131,7 @@ pipx install --force estregg-ybj
 #### Alternative: Run with Docker
 If you prefer running the game inside a container, pull the image:
 ```bash
-docker pull ghcr.io/yb-jeorgie/estregg-ybj:latest
+sudo docker pull ghcr.io/yb-jeorgie/estregg-ybj:latest
 ```
 
 If you need to install Docker on your Linux/Crostini environment first, use these steps:
@@ -142,7 +142,7 @@ If you need to install Docker on your Linux/Crostini environment first, use thes
    ```
 2. **Add Docker official GPG key and repository:**  
    ```bash
-   curl -fsSL https://docker.com | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   curl -fsSL https://get.docker.com | sh
    ```
 3. **Install Docker engine:**  
    ```bash
@@ -182,7 +182,7 @@ estregg
 ```
 Or via Docker:
 ```bash
-docker run -it ghcr.io/yb-jeorgie/estregg-ybj:latest
+sudo docker run -it ghcr.io/yb-jeorgie/estregg-ybj:latest
 ```
 
 > 💡 **Note for Mobile Users:** Because mobile interfaces lack dedicated arrow keys, it is highly recommended to use a physical Bluetooth/OTG keyboard, or a specialized virtual interface application like **Hacker's Keyboard** combined with Termux controls.
