@@ -81,11 +81,9 @@ winget install Python.Python.3.12 --accept-package-agreements --accept-source-ag
 ```
 ```powershell
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-py -m pip install --user pipx
-py -m pipx ensurepath
 ```
 
-> ⚠️ **Note:** To run `estregg` on Windows, you must run `pip install windows-curses` in the Windows Terminal first to prevent crashes.
+> ⚠️ **Note:** To run `estregg` on Windows, you must run `pipx inject estregg-ybj windows-curses` in the Windows Terminal first to prevent crashes.
 
 #### Windows Offline / Download Troubleshooting
 If you encounter network errors like **"cannot download python tools"**, you can install Python manually using a USB drive:
@@ -144,14 +142,7 @@ If you need to install Docker on your Linux/Crostini environment first, use thes
    ```
 2. **Add Docker official GPG key and repository:**  
    ```bash
-   sudo install -m 0755 -d /etc/apt/keyrings
    curl -fsSL https://docker.com | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-   sudo chmod a+r /etc/apt/keyrings/docker.gpg
-
-   echo \
-     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://docker.com \
-     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
    ```
 3. **Install Docker engine:**  
    ```bash
