@@ -189,6 +189,17 @@ sudo docker run -it ghcr.io/yb-jeorgie/estregg-ybj:latest
 
 ---
 
+## Websites
+* **[Main Page](https://yb-jeorgie.github.io/estregg)**
+ 
+* **[PYPI Page](https://pypi.org/project/estregg-ybj)**
+
+* **[Pypistats Page](https://pypistats.org/packages/estregg-ybj)**
+
+* **[Reddit Page](https://www.reddit.com/r/CLI/comments/1wab6ka/estregg/)**
+
+---
+
 ## 💬 Frequently Asked Questions
 
 **Q: Is this a virus?**  
