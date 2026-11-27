@@ -53,7 +53,7 @@
 * **Interactive Star Scanner:** Inspect deep-space solar systems by pressing `R` to reveal stellar classes, solar masses, and radius data.
 * **Cross-Platform Curses Engine:** Refactored runtime hooks to ensure smooth execution on Windows, macOS, Termux, and Docker containers without crashes.
 * **Added Version Command:** Added a version command supporting formats like `estregg -v`, `estregg --v`, `estregg -version`, and `estregg --version`.
-* **Added Some Easter Eggs:** Added the Easter eggs, this needs to be unned properly, press these keys in order to get a planet: `S, M, G, $`, press `d, c` at the same time to get a digital circus glitch animation, press `g` 4 times to get a portal to gameoverse, press these keys in order `c, a, v` to get a calling all Villians line broadcast.
+* **Added Some Easter Eggs:** Added the Easter eggs, this needs to be unned properly, press these keys in order to get a planet: `S, M, G, 4`, press `d, c` at the same time to get a digital circus glitch animation, press `g` 4 times to get a portal to gameoverse, press these keys in order `c, a, v` to get a calling all Villians line broadcast.
 ---
 
 ## 🛠️ Requirements & Installation
