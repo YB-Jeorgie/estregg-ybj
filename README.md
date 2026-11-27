@@ -45,15 +45,15 @@
 
 ## 🔥 Updates
 
-### 🌌 Version 1.1.8 - 1.2.1 — HUGE Massive Update!
+### 🌌 Version 1.1.8 - 1.2.2 — HUGE Massive Update!
 
 * **100 Dynamic Levels Added:** Traverse through 100 uniquely generated star systems filled with dynamic wormholes, black holes, and planetary systems.
-* **Secret Command Console (`Ctrl + E`):** Integrated an in-game secret terminal! Try commands like `jeorgie`, `last level`, and `help`.
+* **Secret Command Console (`Ctrl + E`):** Integrated an in-game secret terminal! Try commands like `jeorgie`, `last level`, `help`, `estregg --multiverse`, `eamp`, and `tmp`
 * **Level Progression & Victory Cutscenes:** Reaching Level 100 triggers the grand animated trophy sequence, alongside high-speed hyper-portal wormhole warp transitions.
 * **Interactive Star Scanner:** Inspect deep-space solar systems by pressing `R` to reveal stellar classes, solar masses, and radius data.
 * **Cross-Platform Curses Engine:** Refactored runtime hooks to ensure smooth execution on Windows, macOS, Termux, and Docker containers without crashes.
 * **Added Version Command:** Added a version command supporting formats like `estregg -v`, `estregg --v`, `estregg -version`, and `estregg --version`.
-
+* **Added Some Easter Eggs:** Added the Easter eggs, this needs to be unned properly, press these keys in order to get a planet: `S, M, G, $`, press `d, c` at the same time to get a digital circus glitch animation, press `g` 4 times to get a portal to gameoverse, press these keys in order `c, a, v` to get a calling all Villians line broadcast.
 ---
 
 ## 🛠️ Requirements & Installation
