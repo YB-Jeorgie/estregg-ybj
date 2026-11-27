@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: estregg-ybj
-Version: 1.2.1
+Version: 1.2.2
 Summary: ESTREGG Space Exploration Terminal Game
 Author-email: Jeorge Miclat <corruption123ter@gmail.com>
 Project-URL: Homepage, https://yb-jeorgie.github.io/estregg/
@@ -19,7 +19,7 @@ DESCRIPTION:
 
 How It Works Once installed, you launch the game simply by typing estregg into your terminal. The game renders a text-based environment using standard ASCII art and keyboard controls. It listens to keypresses to navigate through menus, move your character, and interact with the game world. Because it runs inside standard terminal buffers, it’s super fast, doesn't hog system memory, and doesn't require a heavy graphical engine to play.
 
-Who Made It? Created and maintained by YB-jeorge (GitHub handle: corruption123ter-ux).
+Who Made It? Created and maintained by YB-jeorge (GitHub handle: YB-Jeorgie).
 
 Tools & Tech Stack Python 3: The core game logic is written entirely in Python.
 
