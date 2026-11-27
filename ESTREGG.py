@@ -19,6 +19,7 @@ CLEAR_CMD = 'cls' if platform.system() == 'Windows' else 'clear'
 SAVE_FILE = "estregg_save.json"
 TOTAL_LEVELS = 100
 
+
 class ESTREGG:
 
     def __init__(self, stdscr):
@@ -74,6 +75,32 @@ class ESTREGG:
         self.dpad_state = {'UP': False, 'DOWN': False, 'LEFT': False, 'RIGHT': False}
         self.action_state = {'A': False, 'B': False, 'X': False, 'Y': False}
 
+        # Added event & easter-egg states
+        self.a_press_count = 0
+        self.a_glitch_used_this_level = False
+        self.a_glitch_end_time = 0.0
+
+        self.key_history = []
+        self.recent_keys_timed = []  # list of (key_char, timestamp)
+
+        self.villain_transmission_msg = None
+        self.villain_transmission_end_time = 0.0
+        self.villain_messages = [
+            "📡 VILLAIN TRANSMISSION: Calling all villains! The ESTREGG sector is ripe for takeover...",
+            "📡 VILLAIN TRANSMISSION: Calling all villains! Shadows gather across the cosmos—join the dark alliance!",
+            "📡 VILLAIN TRANSMISSION: Calling all villains! Mysterious signal detected: 'No hero can stop our grand scheme!'",
+            "📡 VILLAIN TRANSMISSION: Calling all villains! Every rogue mastermind on frequency 00.00—report in!"
+        ]
+
+        self.spaghetti_planet_spawned = False
+        self.g_press_count = 0
+        self.gameoverse_portal = None
+        self.gameoverse_portal_end_time = 0.0
+
+        self.glitch_dimension_end_time = 0.0
+        self.eamp_used_this_level = False
+        self.mr_puzzles_takeover = False
+
         self.stars = []
         self._generate_galaxy_content()
         self.load_progress()
@@ -110,6 +137,14 @@ class ESTREGG:
         self.black_hole = {'x': 0, 'y': -140, 'name': 'Sagittarius A*'}
         self.white_hole = {'x': -180, 'y': 100, 'name': 'Polaris Emitter'}
         self.stars = []
+
+        # Reset per-level additions and counters
+        self.a_press_count = 0
+        self.a_glitch_used_this_level = False
+        self.spaghetti_planet_spawned = False
+        self.g_press_count = 0
+        self.gameoverse_portal = None
+        self.eamp_used_this_level = False
 
     def save_progress(self):
         data = {
@@ -312,6 +347,185 @@ class ESTREGG:
             self.scr.refresh()
             time.sleep(0.05)
 
+    def trigger_a_glitch_animation(self):
+        h, w = self.scr.getmaxyx()
+        glitch_chars = ["#", "%", "&", "@", "!", "?", "/", "\\", "~", "*"]
+        start_time = time.time()
+        while time.time() - start_time < 60.0:
+            elapsed = time.time() - start_time
+            remaining = max(0, int(60.0 - elapsed))
+            self.scr.erase()
+            for _ in range(max(40, (h * w) // 18)):
+                gx = random.randint(0, max(1, w - 2))
+                gy = random.randint(0, max(0, h - 1))
+                gch = random.choice(glitch_chars)
+                gcol = random.choice([1, 2, 3, 4, 5, 6])
+                self._safe_addstr(gy, gx, gch, curses.color_pair(gcol) | curses.A_BOLD)
+
+            banner = f"⚡ A-BUTTON OVERLOAD GLITCH! [{remaining}s left] ⚡"
+            self._safe_addstr(max(1, h // 2), max(2, (w - len(banner)) // 2), banner, curses.color_pair(2) | curses.A_REVERSE | curses.A_BOLD)
+            self.scr.refresh()
+            time.sleep(0.06)
+
+    def spawn_spaghetti_planet(self):
+        if self.spaghetti_planet_spawned:
+            return
+        angle = random.uniform(0, 2 * math.pi)
+        dist = random.uniform(50, 200)
+        self.planets.append({
+            'x': math.cos(angle) * dist,
+            'y': math.sin(angle) * dist,
+            'name': "Mario's Spaghetti Planet",
+            'description': "A planet entirely made of spaghetti",
+            'flagged': False,
+            'type': 'spaghetti'
+        })
+        self.spaghetti_planet_spawned = True
+
+    def spawn_gameoverse_portal(self):
+        target_planet = self.planets[0] if self.planets else {'x': 50.0, 'y': 20.0, 'name': 'Unknown Planet'}
+        self.gameoverse_portal = {
+            'x': target_planet['x'] + 12.0,
+            'y': target_planet['y'] + 6.0,
+            'near_planet': target_planet['name'],
+            'text': "GameOverse Portal: Discover a portal that leads to a mysterious dimension"
+        }
+        self.gameoverse_portal_end_time = time.time() + 20.0
+
+    def trigger_multiverse_command(self):
+        h, w = self.scr.getmaxyx()
+        cx, cy = w // 2, h // 2
+
+        # Zoom out animation for 10 ms
+        zoom_out_start = time.time()
+        while (time.time() - zoom_out_start) < 0.01:
+            self.scr.erase()
+            self._safe_addstr(cy, max(2, cx - 18), "🌌 ZOOMING OUT TO MULTIVERSE...", curses.color_pair(4) | curses.A_BOLD)
+            self.scr.refresh()
+            time.sleep(0.002)
+
+        # Show full multiverse and cartoon verse for 10 seconds
+        show_start = time.time()
+        verses = [
+            "[ ESTREGG PRIME UNIVERSE ]",
+            "[ CARTOON VERSE: TOON REALMS & INK SKIES ]",
+            "[ GAMEOVERSE & GLITCH DIMENSIONS ]",
+            "[ PARALLEL GALAXY CLUSTERS ]"
+        ]
+        while (time.time() - show_start) < 10.0:
+            elapsed = time.time() - show_start
+            rem = max(0, int(10.0 - elapsed))
+            self.scr.erase()
+            for _ in range(60):
+                sx = random.randint(0, max(1, w - 2))
+                sy = random.randint(0, max(0, h - 1))
+                self._safe_addstr(sy, sx, random.choice([".", "*", "+", "o"]), curses.color_pair(random.choice([1, 3, 4, 6])) | curses.A_BOLD)
+
+            title = f"=== FULL MULTIVERSE & CARTOON VERSE [{rem}s] ==="
+            self._safe_addstr(max(1, cy - 4), max(2, cx - len(title) // 2), title, curses.color_pair(6) | curses.A_BOLD)
+            for idx, v in enumerate(verses):
+                col = [1, 3, 4, 5][idx % 4]
+                self._safe_addstr(max(2, cy - 2 + idx * 2), max(2, cx - len(v) // 2), v, curses.color_pair(col) | curses.A_BOLD)
+
+            self.scr.refresh()
+            time.sleep(0.06)
+
+        # Zoom back in for 5 seconds
+        zoom_in_start = time.time()
+        while (time.time() - zoom_in_start) < 5.0:
+            elapsed = time.time() - zoom_in_start
+            rem = max(0, int(5.0 - elapsed))
+            self.scr.erase()
+            radius = max(1, int((1.0 - elapsed / 5.0) * min(cx, cy)))
+            for angle in range(0, 360, 20):
+                rad = math.radians(angle)
+                zx = int(cx + math.cos(rad) * radius)
+                zy = int(cy + math.sin(rad) * (radius / 2))
+                self._safe_addstr(zy, zx, "*", curses.color_pair(1) | curses.A_BOLD)
+            msg = f"🔭 ZOOMING BACK IN TO ESTREGG... [{rem}s]"
+            self._safe_addstr(cy, max(2, cx - len(msg) // 2), msg, curses.color_pair(3) | curses.A_BOLD)
+            self.scr.refresh()
+            time.sleep(0.05)
+
+    def run_mr_puzzles_takeover(self):
+        self.mr_puzzles_takeover = True
+        h, w = self.scr.getmaxyx()
+        cx, cy = w // 2, h // 2
+        pressed_kmp = set()
+
+        while self.mr_puzzles_takeover:
+            self.scr.erase()
+            tick = int(time.time() * 6)
+            border_ch = "#" if tick % 2 == 0 else "="
+            for x in range(1, max(2, w - 2)):
+                self._safe_addstr(0, x, border_ch, curses.color_pair(tick % 6 + 1) | curses.A_BOLD)
+                self._safe_addstr(max(1, h - 2), x, border_ch, curses.color_pair((tick + 2) % 6 + 1) | curses.A_BOLD)
+
+            lines = [
+                "╔══════════════════════════════════════════════╗",
+                "║   📺 MR. PUZZLES TERMINAL TAKEOVER! 📺      ║",
+                "║   'Your terminal belongs to the show now!'   ║",
+                "║                                              ║",
+                "║   Press  [ K ] + [ M ] + [ P ]  at the same  ║",
+                "║   time to defeat Mr. Puzzles & take control! ║",
+                "╚══════════════════════════════════════════════╝"
+            ]
+            for idx, line in enumerate(lines):
+                y_pos = max(2, cy - len(lines) // 2 + idx)
+                x_pos = max(2, cx - len(line) // 2)
+                attr = curses.color_pair(4 if idx % 2 == 0 else 1) | curses.A_BOLD
+                self._safe_addstr(y_pos, x_pos, line, attr)
+
+            status_txt = f"Keys detected: {sorted(list(pressed_kmp))}"
+            self._safe_addstr(max(1, h - 1), 2, status_txt, curses.color_pair(6) | curses.A_BOLD)
+            self.scr.refresh()
+
+            try:
+                k = self.scr.getch()
+            except curses.error:
+                k = -1
+
+            if k != -1 and 32 <= k <= 126:
+                ch = chr(k).lower()
+                if ch in ('k', 'm', 'p'):
+                    pressed_kmp.add(ch)
+                else:
+                    pressed_kmp.clear()
+
+            if {'k', 'm', 'p'}.issubset(pressed_kmp):
+                self.mr_puzzles_takeover = False
+                self.scr.erase()
+                defeat_msg = "💥 MR. PUZZLES DEFEATED! Terminal control restored! 💥"
+                self._safe_addstr(cy, max(2, cx - len(defeat_msg) // 2), defeat_msg, curses.color_pair(3) | curses.A_BOLD)
+                self.scr.refresh()
+                time.sleep(1.5)
+                break
+
+            time.sleep(0.04)
+
+    def run_eamp_command(self):
+        colors = ["RED", "BLUE", "GREEN", "YELLOW", "MAGENTA", "CYAN", "ORANGE", "VIOLET"]
+        fandoms = ["Mario", "TADC", "GameOverse", "SMG4", "Baldi", "FNF", "Super Bear", "Vocaloid"]
+        planet_types = ['ring', 'gas', 'rock']
+
+        num_new = random.randint(1, 3)
+        for _ in range(num_new):
+            color_name = random.choice(colors)
+            fandom_name = random.choice(fandoms)
+            angle = random.uniform(0, 2 * math.pi)
+            dist = random.uniform(45, 290)
+            idx_num = len(self.planets) + 1
+            self.planets.append({
+                'x': math.cos(angle) * dist,
+                'y': math.sin(angle) * dist,
+                'name': f"ESTREGG-G{self.galaxy_num}-Planet-{idx_num}",
+                'color': color_name,
+                'fandom': fandom_name,
+                'flagged': False,
+                'type': random.choice(planet_types)
+            })
+        self.eamp_used_this_level = True
+
     def _get_target_planet(self):
         unflagged = [p for p in self.planets if not p['flagged']]
         if not unflagged:
@@ -335,21 +549,34 @@ class ESTREGG:
             self.world_x += math.cos(angle) * 1.8
             self.world_y += math.sin(angle) * 1.8
 
-    def _draw_planet(self, p, h, w):
+    def _draw_planet(self, p, h, w, glitch_dim_active=False):
         px = int((p['x'] - self.cam_x) * self.zoom + (w // 2) * (1 - self.zoom))
         py = int((p['y'] - self.cam_y) * self.zoom + (h // 2) * (1 - self.zoom))
 
-        if p['type'] == 'ring':
+        if p.get('color') and p.get('fandom'):
+            top_label = f"[{p['color']} | {p['fandom']}]"
+            self._safe_addstr(py - 4, px - len(top_label) // 2, top_label, curses.color_pair(6) | curses.A_BOLD)
+        elif p.get('type') == 'spaghetti':
+            top_label = "[Mario's Spaghetti Planet - A planet entirely made of spaghetti]"
+            self._safe_addstr(py - 4, px - len(top_label) // 2, top_label, curses.color_pair(6) | curses.A_BOLD)
+
+        if p.get('type') == 'spaghetti':
+            art = ["  .~~~~~.  ", " / ~~~~~ \\ ", "|  ~~~~~  |", " \\ ~~~~~ / ", "  '~~~~~'  "]
+            p_color = 6
+        elif p['type'] == 'ring':
             art = ["   .---.   ", "  /     \\  ", "==|  O  |==", "  \\     /  ", "   '---'   "]
+            p_color = random.choice([1, 2, 3, 4, 6]) if glitch_dim_active else 7
         elif p['type'] == 'gas':
             art = ["  .----.  ", " / ~~~  \\ ", "|  ===   |", " \\ ~~~  / ", "  '----'  "]
+            p_color = random.choice([1, 2, 3, 4, 6]) if glitch_dim_active else 7
         else:
             art = ["  .---.  ", " / o   \\ ", "|   O   |", " \\   o / ", "  '---'  "]
+            p_color = random.choice([1, 2, 3, 4, 6]) if glitch_dim_active else 7
 
         for idx, line in enumerate(art):
             ly = py + idx - 2
             lx = px - len(line) // 2
-            self._safe_addstr(ly, lx, line, curses.color_pair(7) | curses.A_BOLD)
+            self._safe_addstr(ly, lx, line, curses.color_pair(p_color) | curses.A_BOLD)
 
         if p['flagged']:
             self._safe_addstr(py - 3, px + 2, "[P]", curses.color_pair(3) | curses.A_BOLD)
@@ -446,6 +673,20 @@ class ESTREGG:
             self.scr.refresh()
             return
 
+        now = time.time()
+        glitch_dim_active = now < self.glitch_dimension_end_time
+
+        if glitch_dim_active:
+            rem_gd = max(0, int(self.glitch_dimension_end_time - now))
+            digital_chars = ["#", "%", "&", "@", "*", "+", "~", "0", "1"]
+            for _ in range(max(50, (h * w) // 16)):
+                dx = random.randint(0, max(1, w - 2))
+                dy = random.randint(0, max(0, h - 1))
+                dcol = random.choice([1, 2, 3, 4, 5, 6])
+                self._safe_addstr(dy, dx, random.choice(digital_chars), curses.color_pair(dcol) | curses.A_BOLD)
+            gd_banner = f"🎪 TADC GLITCH DIMENSION [{rem_gd}s] 🎪"
+            self._safe_addstr(0, max(2, (w - len(gd_banner)) // 2), gd_banner, curses.color_pair(4) | curses.A_REVERSE | curses.A_BOLD)
+
         self._init_stars(h, w)
 
         margin_x = w // 4
@@ -464,7 +705,8 @@ class ESTREGG:
                 sx = int((star['x'] - self.cam_x) * self.zoom + (w // 2) * (1 - self.zoom))
                 sy = int((star['y'] - self.cam_y) * self.zoom + (h // 2) * (1 - self.zoom))
                 if 0 <= sy < h - 1 and 0 <= sx < w - 1:
-                    self._safe_addstr(sy, sx, star['char'], curses.color_pair(6) | curses.A_DIM)
+                    scol = random.choice([1, 2, 3, 4, 6]) if glitch_dim_active else 6
+                    self._safe_addstr(sy, sx, star['char'], curses.color_pair(scol) | curses.A_DIM)
 
         for wh in self.wormholes:
             wx = int((wh['x'] - self.cam_x) * self.zoom + (w // 2) * (1 - self.zoom))
@@ -480,12 +722,26 @@ class ESTREGG:
         self._safe_addstr(why, whx - 8, "(( WHITE HOLE ))", curses.color_pair(4) | curses.A_BOLD)
 
         for p in self.planets:
-            self._draw_planet(p, h, w)
+            self._draw_planet(p, h, w, glitch_dim_active=glitch_dim_active)
 
-        self._safe_addstr(1, 2, f"--- ESTREGG LEVEL #{self.galaxy_num} / {TOTAL_LEVELS} ---", curses.color_pair(5))
-        zoom_txt = f"{int(self.zoom * 100)}%"
+        if self.gameoverse_portal and now < self.gameoverse_portal_end_time:
+            gpx = int((self.gameoverse_portal['x'] - self.cam_x) * self.zoom + (w // 2) * (1 - self.zoom))
+            gpy = int((self.gameoverse_portal['y'] - self.cam_y) * self.zoom + (h // 2) * (1 - self.zoom))
+            self._safe_addstr(gpy - 1, gpx - 10, "╔══ GAMEOVERSE PORTAL ══╗", curses.color_pair(4) | curses.A_BOLD)
+            self._safe_addstr(gpy,     gpx - 10, "║  ( ( ( MYSTERY ) ) )  ║", curses.color_pair(1) | curses.A_BOLD)
+            self._safe_addstr(gpy + 1, gpx - 10, "╚═══════════════════════╝", curses.color_pair(4) | curses.A_BOLD)
+            self._safe_addstr(gpy + 2, max(2, gpx - len(self.gameoverse_portal['text']) // 2), self.gameoverse_portal['text'], curses.color_pair(6) | curses.A_BOLD)
+
+        # Villain Transmission above the screen in medium-sized banner text
+        if self.villain_transmission_msg and now < self.villain_transmission_end_time:
+            vx = max(2, (w - len(self.villain_transmission_msg)) // 2)
+            self._safe_addstr(0, vx, self.villain_transmission_msg, curses.color_pair(2) | curses.A_REVERSE | curses.A_BOLD)
+
+        total_planets_cnt = len(self.planets)
         flagged_cnt = sum(1 for p in self.planets if p['flagged'])
-        self._safe_addstr(2, 2, f"[AUTO: {'ON' if self.autopilot else 'OFF'}] [ZOOM: {zoom_txt}] [FLAGS: {flagged_cnt}/10]", curses.color_pair(1) if self.autopilot else curses.color_pair(5))
+        self._safe_addstr(1, 2, f"--- ESTREGG LEVEL #{self.galaxy_num} / {TOTAL_LEVELS} | PLANETS: {total_planets_cnt} ---", curses.color_pair(5))
+        zoom_txt = f"{int(self.zoom * 100)}%"
+        self._safe_addstr(2, 2, f"[AUTO: {'ON' if self.autopilot else 'OFF'}] [ZOOM: {zoom_txt}] [FLAGS: {flagged_cnt}/{total_planets_cnt}]", curses.color_pair(1) if self.autopilot else curses.color_pair(5))
         self._safe_addstr(3, 2, f"[TELEMETRY] POS: ({self.world_x:.1f}, {self.world_y:.1f}) | DIR: {self.direction} | LAST IN: {self.last_input_source}", curses.color_pair(6))
 
         sy = int((self.world_y - self.cam_y) * self.zoom + (h // 2) * (1 - self.zoom))
@@ -545,17 +801,19 @@ class ESTREGG:
         self._safe_addstr(by+2, rx+3, "(A)", curses.color_pair(1) | (curses.A_BOLD if self.action_state['A'] else curses.A_DIM))
 
         if self.info_open:
-            mw, mh = min(56, w - 2), min(14, h - 2)
+            mw, mh = min(58, w - 2), min(16, h - 2)
             mx, my = (w - mw) // 2, (h - mh) // 2
             for y in range(mh): self._safe_addstr(my + y, mx, " " * mw, curses.A_REVERSE)
             self._safe_addstr(my + 1, mx + 2, f"=== ESTREGG PLANETS (LEVEL #{self.galaxy_num}) ===", curses.A_REVERSE | curses.A_BOLD)
             flagged_cnt = sum(1 for p in self.planets if p['flagged'])
-            self._safe_addstr(my + 3, mx + 2, f"Progress: {flagged_cnt} / 10 Planets Flagged", curses.A_REVERSE | curses.A_BOLD)
+            total_p = len(self.planets)
+            self._safe_addstr(my + 3, mx + 2, f"Progress: {flagged_cnt} / {total_p} Planets Flagged", curses.A_REVERSE | curses.A_BOLD)
             for idx, p in enumerate(self.planets):
                 if idx < mh - 6:
                     status = "[FLAGGED]" if p['flagged'] else "[UNFLAGGED]"
-                    self._safe_addstr(my + 4 + idx, mx + 2, f"{p['name']} : {status}", curses.A_REVERSE)
-            if flagged_cnt == 10:
+                    extra = f" ({p['color']}/{p['fandom']})" if p.get('color') and p.get('fandom') else ""
+                    self._safe_addstr(my + 4 + idx, mx + 2, f"{p['name']}{extra} : {status}", curses.A_REVERSE)
+            if flagged_cnt == total_p and total_p > 0:
                 self._safe_addstr(my + mh - 2, mx + 2, "ALL FLAGS COLLECTED! PRESS 'A' FOR VICTORY!", curses.A_REVERSE | curses.color_pair(1) | curses.A_BOLD)
 
         if self.settings_open:
@@ -691,6 +949,18 @@ class ESTREGG:
                     self.cmd_prompt_open = False
                     self.cmd_input = ""
                     self.manual_open = True
+                elif cmd.lower() == "estregg --multiverse":
+                    self.cmd_prompt_open = False
+                    self.cmd_input = ""
+                    self.trigger_multiverse_command()
+                elif cmd.upper() == "MPT":
+                    self.cmd_prompt_open = False
+                    self.cmd_input = ""
+                    self.run_mr_puzzles_takeover()
+                elif cmd.upper() == "EAMP":
+                    self.cmd_prompt_open = False
+                    self.cmd_input = ""
+                    self.run_eamp_command()
                 else:
                     self.cmd_input = ""
             elif key in [8, 127, curses.KEY_BACKSPACE]:
@@ -708,6 +978,35 @@ class ESTREGG:
             self.current_screen = 'TITLE'
             return True
 
+        # Track character sequences and simultaneous D + C in GAME screen
+        now = time.time()
+        if key != -1 and 32 <= key <= 126:
+            ch_upper = chr(key).upper()
+            self.key_history.append(ch_upper)
+            if len(self.key_history) > 12:
+                self.key_history = self.key_history[-12:]
+
+            self.recent_keys_timed = [(k_ch, ts) for (k_ch, ts) in self.recent_keys_timed if now - ts <= 0.25]
+            self.recent_keys_timed.append((ch_upper, now))
+            recent_set = {k_ch for (k_ch, _) in self.recent_keys_timed}
+            if {'D', 'C'}.issubset(recent_set):
+                self.glitch_dimension_end_time = now + 60.0
+                self.recent_keys_timed.clear()
+
+            if self.key_history[-3:] == ['C', 'A', 'V']:
+                self.villain_transmission_msg = random.choice(self.villain_messages)
+                self.villain_transmission_end_time = now + 8.0
+                self.key_history.clear()
+
+            if self.key_history[-4:] == ['S', 'M', 'G', '4']:
+                self.spawn_spaghetti_planet()
+                self.key_history.clear()
+
+            if ch_upper == 'G':
+                self.g_press_count += 1
+                if self.g_press_count % 4 == 0:
+                    self.spawn_gameoverse_portal()
+
         if key == curses.KEY_UP: self.process_movement('UP')
         elif key == curses.KEY_DOWN: self.process_movement('DOWN')
         elif key == curses.KEY_LEFT: self.process_movement('LEFT')
@@ -715,7 +1014,11 @@ class ESTREGG:
 
         if key in [ord('a'), ord('A')]: 
             self.action_state['A'] = True
-            if sum(1 for p in self.planets if p['flagged']) == 10:
+            self.a_press_count += 1
+            if self.a_press_count > 12 and not self.a_glitch_used_this_level:
+                self.a_glitch_used_this_level = True
+                self.trigger_a_glitch_animation()
+            elif sum(1 for p in self.planets if p['flagged']) == len(self.planets) and len(self.planets) > 0:
                 self.trigger_level_advance()
             else:
                 self.autopilot = not self.autopilot
